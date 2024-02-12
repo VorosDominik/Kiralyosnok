@@ -18,15 +18,18 @@ public class Kiralynok1 extends javax.swing.JFrame {
      */
     public int Number = 0;
     public Tabla T;
-
+    public String msg;
     public Kiralynok1() {
+       
         initComponents();
         Tabla t1 = new Tabla('*');
         T = t1;
+        msg=t1.getAllapot();
+        msg+=t1.ÜresOszlopokSzáma();
+        msg+=t1.ÜresSorokSzáma();
+          megjelenit(msg);
 
-        megjelenit(t1.getAllapot());
-
-        
+       
     }
 
    
@@ -73,6 +76,7 @@ public class Kiralynok1 extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Hozzá ad"));
 
+        justAnumber.setMajorTickSpacing(1);
         justAnumber.setMaximum(64);
         justAnumber.setToolTipText("");
         justAnumber.setValue(1);
@@ -103,7 +107,7 @@ public class Kiralynok1 extends javax.swing.JFrame {
                         .addComponent(confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(justAnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ThisNumber))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +129,7 @@ public class Kiralynok1 extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -141,7 +145,7 @@ public class Kiralynok1 extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
@@ -172,7 +176,10 @@ public class Kiralynok1 extends javax.swing.JFrame {
 
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
         T.elhelyez(Number);
-        megjelenit(T.getAllapot());
+         msg=T.getAllapot();
+        msg+=T.ÜresOszlopokSzáma();
+        msg+=T.ÜresSorokSzáma();
+        megjelenit(msg);
     }//GEN-LAST:event_confirmActionPerformed
 
     private void setnumber(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setnumber

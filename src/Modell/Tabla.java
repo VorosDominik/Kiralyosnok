@@ -21,6 +21,11 @@ public class Tabla {
         UresCella = uresCella;
         allapot = "";
 
+        defa();
+
+    }
+
+    private void defa() {
         for (int i = 0; i < T.length; i++) {
             for (int j = 0; j < T[i].length; j++) {
                 T[i][j] = UresCella;
@@ -28,7 +33,6 @@ public class Tabla {
             }
             allapot += "\n";
         }
-
     }
 
     public String getAllapot() {
@@ -37,13 +41,7 @@ public class Tabla {
 
     public String elhelyez(int N) {
 
-        for (int i = 0; i < T.length; i++) {
-            for (int j = 0; j < T[i].length; j++) {
-                T[i][j] = UresCella;
-                allapot += T[i][j] + " ";
-            }
-            allapot += "\n";
-        }
+        defa();
         Random rnd = new Random();
         int Kiralynok = 0;
 
@@ -56,7 +54,6 @@ public class Tabla {
             }
         }
 
-        // Frissítsük az allapot string-et a T tömb aktuális állapotával
         allapot = "";
         for (int i = 0; i < T.length; i++) {
             for (int j = 0; j < T[i].length; j++) {
@@ -66,5 +63,50 @@ public class Tabla {
         }
 
         return allapot;
+    }
+
+    private boolean ÜresOszlop(int akartOszlop) {
+        char[] oszlop = new char[T.length];
+        for (int i = 0; i < T.length; i++) {
+            oszlop[i] = T[i][akartOszlop];
+        }
+        for (char c : oszlop) {
+            if (c == 'K') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean ÜresSor(int akartsor) {
+        char[] sor = T[akartsor];
+        for (char c : sor) {
+            if (c == 'K') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public String ÜresOszlopokSzáma() {
+        int UrOsz = 0;
+        for (int i = 0; i < 7; i++) {
+            if (ÜresOszlop(i) == true) {
+                UrOsz++;
+            }
+        }
+        return " Az üres oszlopok száma: " + UrOsz;
+    }
+
+    public String ÜresSorokSzáma() {
+
+        int UrOsz = 0;
+        for (int i = 0; i < 7; i++) {
+            if (ÜresSor(i) == true) {
+                UrOsz++;
+            }
+        }
+
+        return " Az üres sorok száma: " + UrOsz;
     }
 }
