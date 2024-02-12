@@ -6,9 +6,14 @@ package kiralynok;
 
 import Modell.Tabla;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Phaser;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -204,15 +209,25 @@ public class Kiralynok1 extends javax.swing.JFrame {
     }//GEN-LAST:event_setnumber
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            T.hatvannégy();
-        } catch (IOException ex) {
-            Logger.getLogger(Kiralynok1.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        fileletrehoz();
+        JOptionPane.showMessageDialog(rootPane, "létre hozta a tablak64.TXT-t");
     }//GEN-LAST:event_jButton1ActionPerformed
+        public void fileletrehoz(){
+    
+    List<String> lines = new ArrayList<>();
+        for (int i = 1; i <= 64; i++) {
+            Tabla tabla = new Tabla('*');
+            
+            lines.add("Tábla " + i + ":\n" + tabla.Tablatartalma());
+        }
 
-    /**
-     * @param args the command line arguments
+        try {
+            Files.write(Paths.get("tablak64.txt"), lines);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    /** and line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
