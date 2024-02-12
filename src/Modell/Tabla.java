@@ -4,34 +4,67 @@
  */
 package Modell;
 
+import java.util.Random;
+
 /**
  *
  * @author Vörös
  */
 public class Tabla {
+
     private char[][] T;
-    private char UresCella; 
+    private char UresCella;
     private String allapot;
-    
+
     public Tabla(char uresCella) {
-        T = new char[8][8]; 
-        UresCella = uresCella; 
-        allapot="";
-       
+        T = new char[8][8];
+        UresCella = uresCella;
+        allapot = "";
 
-       
-       for (int i = 0; i < T.length; i++) {
-    for (int j = 0; j < T[i].length; j++) {
-        T[i][j] = UresCella;
-        allapot+= T[i][j] + " ";
-    }
-        allapot+="\n";        
+        for (int i = 0; i < T.length; i++) {
+            for (int j = 0; j < T[i].length; j++) {
+                T[i][j] = UresCella;
+                allapot += T[i][j] + " ";
+            }
+            allapot += "\n";
+        }
+
     }
 
-
-   
-    }
     public String getAllapot() {
+        return allapot;
+    }
+
+    public String elhelyez(int N) {
+
+        for (int i = 0; i < T.length; i++) {
+            for (int j = 0; j < T[i].length; j++) {
+                T[i][j] = UresCella;
+                allapot += T[i][j] + " ";
+            }
+            allapot += "\n";
+        }
+        Random rnd = new Random();
+        int Kiralynok = 0;
+
+        while (Kiralynok < N) {
+            int X = rnd.nextInt(8);
+            int Y = rnd.nextInt(8);
+            if (T[X][Y] != 'K') {
+                T[X][Y] = 'K';
+                Kiralynok++;
+            }
+        }
+
+        // Frissítsük az allapot string-et a T tömb aktuális állapotával
+        allapot = "";
+        for (int i = 0; i < T.length; i++) {
+            for (int j = 0; j < T[i].length; j++) {
+                allapot += T[i][j] + " ";
+            }
+            allapot += "\n";
+        }
+
         return allapot;
     }
 }
