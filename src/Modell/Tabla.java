@@ -4,6 +4,14 @@
  */
 package Modell;
 
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+
 import java.util.Random;
 
 /**
@@ -109,4 +117,30 @@ public class Tabla {
 
         return " Az üres sorok száma: " + UrOsz;
     }
-}
+    public String Tablatartalma(){
+    String szov="";
+    for (int i = 0; i < T.length; i++) {
+        for (int j = 0; j < T[i].length; j++) {
+            szov+=T[i][j] + " ";
+        }
+        szov+="\n"; 
+    }
+    return  szov;
+    }
+    public void hatvannégy() throws IOException{
+    List<String> lines = new ArrayList<>();
+        for (int i = 1; i <= 64; i++) {
+            Tabla tabla = new Tabla('*');
+         
+            lines.add("Tábla " + i + ":\n" + tabla.Tablatartalma());
+        }
+
+        Files.write(Paths.get("tablak64.txt"), lines);
+    }
+    
+    
+    
+    
+    
+    }
+
